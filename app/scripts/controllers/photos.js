@@ -9,6 +9,8 @@
  */
 angular.module('potatoApp')
   .controller('PhotosCtrl', function ($scope) {
+    $scope.random = "hello!";
+    
     $scope.feedItems = [
       {
         "title": "foods",
