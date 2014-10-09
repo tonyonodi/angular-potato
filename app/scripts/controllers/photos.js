@@ -7,11 +7,8 @@
  * # PhotosCtrl
  * Controller of the potatoApp
  */
-angular.module('potatoApp')
-  .controller('PhotosCtrl', function ($scope) {
-    $scope.random = "hello!";
-    
-    $scope.feedItems = [
+
+var hardCoded = [
       {
         "title": "foods",
         "link": "http://www.flickr.com/photos/rumali/15298494200/",
@@ -35,4 +32,10 @@ angular.module('potatoApp')
         "tags": "autumn vegetables soup potato crisps roasted"
       }
     ];
-  });
+
+angular.module('potatoApp')
+  .controller('PhotosCtrl', function ($scope) {
+    $scope.random = "hello!";
+    
+    $scope.feedItems = hardCoded;
+});
