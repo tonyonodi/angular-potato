@@ -1,6 +1,8 @@
 <div ng-controller="PhotosCtrl">
   <div class="row marketing" ng-repeat="feedItem in feedItems">
-      <h3>{{feedItem.title}}</h3>
-      <p><img src="{{feedItem.media.m}}" alt=""></p>
+      <img src="{{feedItem.media.m}}" alt="" class="thumbnail">
+      <h3 class="title">{{feedItem.title}}</h3>
+      <div class="date-published">Published: {{feedItem.date_taken}}</div>
+      <a href="http://flickr.com/photos/{{feedItem.author_id}}">Photo Author</a>
   </div>
 </div>
