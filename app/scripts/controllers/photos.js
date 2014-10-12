@@ -31,11 +31,29 @@ var hardCoded = [
         "author_id": "58807539@N07",
         "tags": "autumn vegetables soup potato crisps roasted"
       }
-    ];
+    ],
+    getUrl = "http://localhost:8888/http://api.flickr.com/services/feeds/photos_public.gne?tags=potato&tagmode=all&format=json&api_key=19125c0693fd4a10163b5fb92c2c37e8",
+    cleanseResponse;
+
+cleanseResponse = function(response) {
+    if ( response.indexOf("jsonFlickrFeed(") == -1 ) {
+        return "unable to cleanse data"
+    }
+
+    return response.slice(15, -1)
+}
 
 angular.module('potatoApp')
-  .controller('PhotosCtrl', function ($scope) {
-    $scope.random = "hello!";
-    
-    $scope.feedItems = hardCoded;
+  .controller('PhotosCtrl', function ($scope, $http) {
+
+    $http.get(getUrl).success(function(data, status, headers, config) {
+        var cleansedData;
+
+        cleansedData = cleanseResponse(data);
+
+        $scope.feedItems = JSON.parse(cleansedData).items;
+    }).error(function(data, status, headers, config) {
+        console.log("ERROR");
+    });
+
 });
