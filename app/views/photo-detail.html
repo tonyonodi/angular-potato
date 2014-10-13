@@ -5,4 +5,12 @@
 <main>
 	<img src="{{photo.media.m}}" alt="" class="thumbnail">
 	<div class="description" ng-bind-html="photo.description"></div>
+	<div class="tags">
+		<p>
+			Tags: 
+			<span ng-repeat="tag in photo.tags">
+				<a href="#">{{tag}}</a>
+			</span>
+		</p>
+	</div>
 </main>
