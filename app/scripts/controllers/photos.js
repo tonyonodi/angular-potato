@@ -26,28 +26,19 @@ processJSON = function( list ) {
     var i,
         link,
         dateString,
+        tagString,
         dateObj,
-        prettyDateString = "",
-        date,
-        month,
-        year,
-        hours,
-        minutes,
-        dateSuffix = {
-            1: "st",
-            2: "nd",
-            3: "rd",
-            21: "st",
-            22: "nd",
-            23: "rd",
-            31: "st"
-        },
-        monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        date, month, year, hours, minutes,
+        prettyDateString,
+        dateSuffix = { 1: "st", 2: "nd", 3: "rd", 21: "st", 22: "nd", 23: "rd", 31: "st"},
+        monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        tagArray;
 
     for (i = 0; i < list.length; i++) {
         // retrieve from photo object
         link = list[i].link;
         dateString = list[i].date_taken;
+        tagString = list[i].tags;
 
         // get unique photo identifier
         link = link.split("/");
@@ -67,6 +58,10 @@ processJSON = function( list ) {
         prettyDateString = date + " " + month + " " + year + " at " + hours + ":" + minutes;
 
         list[i].pretty_date_taken = prettyDateString;
+
+        tagArray = tagString.split(" ");
+
+        list[i].tags = tagArray;
 
     }
 
