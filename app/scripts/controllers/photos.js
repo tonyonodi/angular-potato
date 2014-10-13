@@ -25,15 +25,20 @@ cleanseResponse = function(response) {
 processJSON = function( list ) {
     var i,
         link,
-        date;
+        dateString;
 
     for (i = 0; i < list.length; i++) {
+        // retrieve from photo object
         link = list[i].link;
-        date = list[i].date;
+        dateString = list[i].date;
 
+        // get unique photo identifier
         link = link.split("/");
         link = link[link.length - 2];
         list[i].id = link;
+
+        // replace date string with date object
+        list[i].date = new Date(dateString);
     }
 
     return list;
