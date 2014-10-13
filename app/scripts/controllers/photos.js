@@ -25,20 +25,49 @@ cleanseResponse = function(response) {
 processJSON = function( list ) {
     var i,
         link,
-        dateString;
+        dateString,
+        dateObj,
+        prettyDateString = "",
+        date,
+        month,
+        year,
+        hours,
+        minutes,
+        dateSuffix = {
+            1: "st",
+            2: "nd",
+            3: "rd",
+            21: "st",
+            22: "nd",
+            23: "rd",
+            31: "st"
+        },
+        monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     for (i = 0; i < list.length; i++) {
         // retrieve from photo object
         link = list[i].link;
-        dateString = list[i].date;
+        dateString = list[i].date_taken;
 
         // get unique photo identifier
         link = link.split("/");
         link = link[link.length - 2];
         list[i].id = link;
 
-        // replace date string with date object
-        list[i].date = new Date(dateString);
+        // make pretty date
+        dateObj = new Date(dateString);
+        
+        date = dateObj.getDate();
+        date =  date + (dateSuffix[date] || "th");
+        month = monthList[ dateObj.getMonth() ];
+        year = dateObj.getFullYear();
+        hours = dateObj.getHours();
+        minutes = dateObj.getMinutes();
+
+        prettyDateString = date + " " + month + " " + year + " at " + hours + ":" + minutes;
+
+        list[i].pretty_date_taken = prettyDateString;
+
     }
 
     return list;
