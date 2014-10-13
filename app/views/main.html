@@ -1,7 +1,11 @@
 <div class="row marketing" ng-repeat="feedItem in feedItems">
   <a href="/#/photos/{{feedItem.id}}"><img src="{{feedItem.media.m}}" alt="" class="thumbnail"></a>
+
   <h3 class="title">{{feedItem.title}}</h3>
+
   <div class="date-published">Published: {{feedItem.pretty_date_taken}}</div>
+  
   <a href="http://flickr.com/photos/{{feedItem.author_id}}" target="_blank">Photo Author</a>
+  
   <a href="{{feedItem.link}}" target="_blank">View on flickr</a>
 </div>
