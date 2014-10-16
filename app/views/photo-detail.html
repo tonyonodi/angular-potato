@@ -1,16 +1,23 @@
-<header>
-	<h2>{{photo.title}}</h2>
-	<a href="http://flickr.com/photos/{{photo.author_id}}" target="_blank">Photo Author</a> | <span>Published: {{photo.pretty_date_taken}}</span>
-</header>
-<main>
-	<img src="{{photo.media.m}}" alt="" class="thumbnail">
-	<div class="description" ng-bind-html="photo.description"></div>
-	<div class="tags">
-		<p>
-			Tags: 
-			<span ng-repeat="tag in photo.tags">
-				<a href="https://www.flickr.com/photos/tags/{{tag}}" target="_blank">{{tag}}</a>
-			</span>
-		</p>
+<header class="row">
+	<div class="col-md-10">
+		<a href="http://flickr.com/photos/{{photo.author_id}}/{{photo.id}}" target="_blank"><h1>{{photo.title}}</h1></a>
+		<a href="http://flickr.com/photos/{{photo.author_id}}" target="_blank">Photo Author</a> | <span>Published: {{photo.pretty_date_taken}}</span>
 	</div>
+	<div class="col-md-2">
+		<a href="/" class="btn btn-primary">back</a>
+	</div>
+</header>
+<main class="row">
+	<div class="col-md-4">
+		<img src="{{photo.media.m}}" alt="" class="thumbnail">
+	</div>
+	<div class="col-md-8"><div class="description" ng-bind-html="photo.description"></div>
+		<div class="tags">
+			<p>
+				Tags: 
+				<span ng-repeat="tag in photo.tags">
+					<a href="https://www.flickr.com/photos/tags/{{tag}}" target="_blank">{{tag}}</a>
+				</span>
+			</p>
+		</div></div>
 </main>
