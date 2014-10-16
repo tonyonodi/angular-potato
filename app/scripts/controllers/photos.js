@@ -12,15 +12,6 @@ var getUrl = "http://localhost:8888/http://api.flickr.com/services/feeds/photos_
     cleanseResponse,
     processJSON;
 
-// removes extraneous text from retrieved JSON string
-cleanseResponse = function(response) {
-    if ( response.indexOf("jsonFlickrFeed(") == -1 ) {
-        return "unable to cleanse data"
-    }
-
-    return response.slice(15, -1)
-}
-
 // creates photo ID, processes date, truncates title text
 processJSON = function( list ) {
     var i,
@@ -72,11 +63,9 @@ angular.module('potatoApp')
   .controller('PhotosCtrl', function ($scope, $http) {
 
     $http.get(getUrl).success(function(data, status, headers, config) {
-        var cleansedData,
-            processedJSON;
+        var processedJSON;
 
-        processedJSON = JSON.parse(cleanseResponse(data)).items;
-        processedJSON = processJSON(processedJSON);
+        processedJSON = processJSON(data.items);
 
         $scope.feedItems = processedJSON;
     }).error(function(data, status, headers, config) {
