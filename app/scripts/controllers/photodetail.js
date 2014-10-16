@@ -23,8 +23,7 @@ angular.module('potatoApp')
             processedJSON,
             filteredList;
 
-        processedJSON = JSON.parse(cleanseResponse(data)).items;
-        processedJSON = processJSON(processedJSON);
+        processedJSON = processJSON(data.items);
 
 		filteredList = processedJSON.filter(idMatches);
 
