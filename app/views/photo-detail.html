@@ -1,4 +1,4 @@
-<header class="row detail-header">
+<header class="detail-header">
 	<div class="col-md-10">
 		<a href="http://flickr.com/photos/{{photo.author_id}}/{{photo.id}}" target="_blank"><h1>{{photo.title}}</h1></a>
 		<a href="http://flickr.com/photos/{{photo.author_id}}" target="_blank">Photo Author</a> | <span>Published: {{photo.pretty_date_taken}}</span>
@@ -7,11 +7,11 @@
 		<a href="/" class="back-button">back</a>
 	</div>
 </header>
-<main class="row">
-	<div class="col-md-4">
+<main class="detail-main">
+	<div class="detail-image">
 		<img src="{{photo.media.m}}" alt="" class="thumbnail">
 	</div>
-	<div class="col-md-8"><div class="description" ng-bind-html="photo.description"></div>
+	<div class="detail-text"><div class="description" ng-bind-html="photo.description"></div>
 		<div class="tags">
 			<p>
 				Tags: 
@@ -19,5 +19,6 @@
 					<a href="https://www.flickr.com/photos/tags/{{tag}}" target="_blank">{{tag}}</a>
 				</span>
 			</p>
-		</div></div>
+		</div>
+	</div>
 </main>
