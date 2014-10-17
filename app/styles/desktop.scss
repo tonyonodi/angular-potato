@@ -1,19 +1,36 @@
 .container {
-	max-width: 800px;
+	max-width: 1440px;
 }
 
 .description p:nth-child(-n+2) {
 	display: none;
 }
 
-.back-button {
-	@extend .btn;
-	@extend .btn-primary;
+.item-single {
+	@extend .row;
+	.item-photo {
+		@extend .col-md-4;
+	}
+	.item-text {
+		@extend .col-md-8;
+	}
 }
 
 .detail-header {
 	@extend .row;
 	margin-bottom: 2em;
+
+	.detail-header-text {
+		@extend .col-md-10;
+	}
+
+	.back-div {
+		@extend .col-md-2;
+		a {
+			@extend .btn;
+			@extend .btn-primary;
+		}
+	}
 }
 
 .detail-main {
