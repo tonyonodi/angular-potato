@@ -6,11 +6,12 @@
 	display: none;
 }
 
-.row.item-single {
-	.item-photo {
-
-	}
-	.item-text {
-
-	}
+.back-button {
+	@extend .btn;
+	@extend .btn-primary;
 }
+
+.detail-header {
+	margin-bottom: 2em;
+}
+
