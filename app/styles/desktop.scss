@@ -10,9 +10,14 @@
 	@extend .row;
 	.item-photo {
 		@extend .col-md-4;
+		@extend .col-xs-4;
+		img {
+			max-width: 100%;
+		}
 	}
 	.item-text {
 		@extend .col-md-8;
+		@extend .col-xs-8;
 	}
 }
 
