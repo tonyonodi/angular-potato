@@ -1,0 +1,17 @@
+<div class="item-single" ng-repeat="feedItem in feedItems">
+  <div class="item-photo">
+  	<a href="{{rootURL}}/#/photos/{{feedItem.id}}"><img src="{{feedItem.media.m}}" alt="" class="thumbnail"></a>
+  </div>
+
+  <div class="item-text">
+  	<a href="{{rootURL}}/#/photos/{{feedItem.id}}">
+	  	<h3 class="title">{{feedItem.title}}</h3>
+	</a>
+  	
+  	<span class="date-published">Published: {{feedItem.pretty_date_taken}}</span>
+  	
+  	<a href="http://flickr.com/photos/{{feedItem.author_id}}" target="_blank">Photo Author</a>
+  	
+  	<a href="{{$scope.rootURL + feedItem.link}}" target="_blank">View on flickr</a>
+  </div>
+</div>
